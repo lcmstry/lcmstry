@@ -115,21 +115,28 @@ export default function SecretMessagesPage() {
         return;
     }
 
+    let isAppropriate = true;
     try {
         const fullMessageText = `${values.to}: ${values.message}`;
         const moderationResult = await moderateText({ text: fullMessageText });
+        isAppropriate = moderationResult.isAppropriate;
+    } catch (aiError) {
+        console.warn("AI moderation failed, defaulting to appropriate.", aiError);
+        isAppropriate = true;
+    }
 
-        if (!moderationResult.isAppropriate) {
-            toast({
-                variant: 'destructive',
-                title: 'Pesan Ditolak',
-                description: 'Mengandung kata yang dilarang, harap untuk tidak menggunakan kata kasar!',
-            });
-            setIsSubmitting(false);
-            return;
-        }
+    if (!isAppropriate) {
+        toast({
+            variant: 'destructive',
+            title: 'Pesan Ditolak',
+            description: 'Mengandung kata yang dilarang, harap untuk tidak menggunakan kata kasar!',
+        });
+        setIsSubmitting(false);
+        return;
+    }
 
-        await addDocumentNonBlocking(messagesCollectionRef, {
+    try {
+        addDocumentNonBlocking(messagesCollectionRef, {
             to: values.to,
             message: values.message,
             createdAt: serverTimestamp(),
