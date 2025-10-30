@@ -19,12 +19,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Send, RefreshCw, MessageSquare, User } from 'lucide-react';
+import { Send, RefreshCw, MessageSquare, User, Spy, Mail } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { id as indonesiaLocale } from 'date-fns/locale';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { moderateText } from '@/ai/flows/moderate-text-flow';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 
 const messageSchema = z.object({
   to: z.string().min(2, 'Nama tujuan minimal 2 karakter.').max(50, 'Nama tujuan maksimal 50 karakter.'),
@@ -59,6 +60,7 @@ export default function SecretMessagesPage() {
   const { firestore, auth, user, isUserLoading } = useFirebase();
   const [captcha, setCaptcha] = useState<Captcha>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState<AnonymousMessage | null>(null);
 
   useEffect(() => {
     setCaptcha(generateCaptcha());
@@ -117,12 +119,10 @@ export default function SecretMessagesPage() {
 
     let isAppropriate = true;
     try {
-        const fullMessageText = `${values.to}: ${values.message}`;
-        const moderationResult = await moderateText({ text: fullMessageText });
+        const moderationResult = await moderateText({ text: values.message });
         isAppropriate = moderationResult.isAppropriate;
     } catch (aiError) {
         console.warn("AI moderation failed, defaulting to appropriate.", aiError);
-        // Fallback: If AI moderation fails, assume the message is appropriate.
         isAppropriate = true;
     }
 
@@ -236,36 +236,64 @@ export default function SecretMessagesPage() {
             </CardContent>
           </Card>
 
-          <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center text-white mb-10 flex items-center justify-center gap-3">
-                  <MessageSquare className="h-8 w-8 text-primary"/>
-                  Papan Pesan
-              </h2>
-              {isLoadingMessages && (
-                   <div className="text-center text-muted-foreground">Memuat pesan...</div>
-              )}
-              {!isLoadingMessages && messages?.length === 0 && (
-                  <p className="text-center text-muted-foreground">Belum ada pesan. Jadilah yang pertama!</p>
-              )}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {messages?.map(msg => (
-                      <Card key={msg.id} className="spotlight-card">
-                          <CardContent className="spotlight-card-content pt-6 flex flex-col justify-between h-full">
-                            <div>
-                                <div className="flex items-center gap-2 mb-3 text-primary">
-                                    <User className="h-4 w-4"/>
-                                    <p className="font-bold text-sm">Untuk: {msg.to}</p>
-                                </div>
-                                <p className="text-sm text-white leading-relaxed">{msg.message}</p>
-                            </div>
-                            <p className="text-xs text-muted-foreground mt-4 self-end">
-                                {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt.seconds * 1000), { addSuffix: true, locale: indonesiaLocale }) : 'beberapa saat yang lalu'}
-                            </p>
-                          </CardContent>
-                      </Card>
-                  ))}
-              </div>
-          </div>
+          <Dialog>
+            <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-bold text-center text-white mb-10 flex items-center justify-center gap-3">
+                    <MessageSquare className="h-8 w-8 text-primary"/>
+                    Papan Pesan
+                </h2>
+                {isLoadingMessages && (
+                     <div className="text-center text-muted-foreground">Memuat pesan...</div>
+                )}
+                {!isLoadingMessages && messages?.length === 0 && (
+                    <p className="text-center text-muted-foreground">Belum ada pesan. Jadilah yang pertama!</p>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {messages?.map(msg => (
+                        <DialogTrigger key={msg.id} asChild>
+                            <Card className="spotlight-card cursor-pointer" onClick={() => setSelectedMessage(msg)}>
+                                <CardContent className="spotlight-card-content pt-6 flex flex-col justify-between h-full">
+                                  <div>
+                                      <div className="flex items-center gap-2 mb-3 text-primary">
+                                          <User className="h-4 w-4"/>
+                                          <p className="font-bold text-sm">Untuk: {msg.to}</p>
+                                      </div>
+                                      <p className="text-sm text-white leading-relaxed line-clamp-3">{msg.message}</p>
+                                  </div>
+                                  <p className="text-xs text-muted-foreground mt-4 self-end">
+                                      {msg.createdAt ? formatDistanceToNow(new Date(msg.createdAt.seconds * 1000), { addSuffix: true, locale: indonesiaLocale }) : 'beberapa saat yang lalu'}
+                                  </p>
+                                </CardContent>
+                            </Card>
+                        </DialogTrigger>
+                    ))}
+                </div>
+            </div>
+
+            {selectedMessage && (
+              <DialogContent className="sm:max-w-md bg-card/80 backdrop-blur-lg border-primary/30 text-white">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-3 text-xl text-primary">
+                    <Spy className="h-6 w-6"/>
+                    Ssst! Pesan Rahasia Terungkap!
+                  </DialogTitle>
+                  <DialogDescription className="text-muted-foreground pt-2">
+                    Ini adalah pesan rahasia yang dikirimkan untuk seseorang.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="my-4 p-4 rounded-lg bg-background/50 border border-border">
+                  <div className="flex items-center gap-2 mb-3 text-accent">
+                      <Mail className="h-4 w-4"/>
+                      <p className="font-bold text-sm">Untuk: {selectedMessage.to}</p>
+                  </div>
+                  <blockquote className="border-l-4 border-primary pl-4 italic text-white/90">
+                    {selectedMessage.message}
+                  </blockquote>
+                </div>
+              </DialogContent>
+            )}
+          </Dialog>
+
         </div>
       </div>
       <Footer />
