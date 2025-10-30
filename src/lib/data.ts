@@ -1,3 +1,4 @@
+
 export type Schedule = {
   time: string;
   subject: string;
@@ -12,37 +13,37 @@ export const scheduleData: DaySchedule[] = [
   {
     day: "Senin",
     courses: [
-      { time: "07:00 - 10:50", subject: "Praktikum Multimedia" },
-      { time: "10:50 - 12:30", subject: "Bahasa Indonesia" },
+      { time: "07:00 - 09:30", subject: "Dasar-Dasar Ekonomi" },
+      { time: "10:00 - 12:30", subject: "Praktikum Pemrograman Visual" },
     ],
   },
   {
     day: "Selasa",
     courses: [
-      { time: "07:00 - 08:40", subject: "Sistem Operasi" },
-      { time: "08:40 - 10:50", subject: "Struktur Data" },
-      { time: "10:50 - 12:30", subject: "Agama" },
+      { time: "07:00 - 08:40", subject: "Pemrograman Mobile" },
+      { time: "08:40 - 10:50", subject: "Matematika Diskrit" },
+      { time: "10:50 - 12:30", subject: "Basis Data I" },
     ],
   },
   {
     day: "Rabu",
     courses: [
-      { time: "07:00 - 09:30", subject: "Statistik" },
-      { time: "10:00 - 12:30", subject: "Praktikum Statistik" },
+      { time: "07:00 - 09:30", subject: "Manajemen Perusahaan" },
+      { time: "10:00 - 12:30", subject: "Praktikum Basis Data I" },
     ],
   },
   {
     day: "Kamis",
     courses: [
-      { time: "07:00 - 09:30", subject: "Praktikum Sistem Operasi" },
-      { time: "10:00 - 12:30", subject: "Prak. Struktur Data" },
+      { time: "07:00 - 09:30", subject: "Keamanan Komputer" },
+      { time: "10:00 - 12:30", subject: "Prak. Pemrograman Mobile" },
     ],
   },
   {
     day: "Jumat",
     courses: [
-      { time: "07:00 - 09:30", subject: "Praktikum Teknologi Internet" },
-      { time: "09:50 - 11:30", subject: "Bahasa Inggris II" },
+      { time: "07:00 - 09:30", subject: "Analisis Proses Bisnis" },
+      { time: "10:00 - 11:40", subject: "Bahasa Inggris III" },
     ],
   },
 ];
