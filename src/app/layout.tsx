@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   title: 'ICMSTRY - IC 2024',
   description: 'IC 2024 Manajemen Informatika Politeknik Negeri Sriwijaya.',
   icons: {
-    icon: '/images/icon/IC.png',
+    icon: '/images/icon/logo-ic.ico',
   }
 };
 
