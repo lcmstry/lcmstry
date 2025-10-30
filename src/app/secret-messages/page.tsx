@@ -275,7 +275,7 @@ export default function SecretMessagesPage() {
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-3 text-xl text-primary">
                     <KeyRound className="h-6 w-6"/>
-                    Ssst! Pesan Rahasia Terungkap!
+                    Ssst. ada pesan anonim!
                   </DialogTitle>
                   <DialogDescription className="text-muted-foreground pt-2">
                     Ini adalah pesan rahasia yang dikirimkan untuk seseorang.
