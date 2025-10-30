@@ -122,6 +122,7 @@ export default function SecretMessagesPage() {
         isAppropriate = moderationResult.isAppropriate;
     } catch (aiError) {
         console.warn("AI moderation failed, defaulting to appropriate.", aiError);
+        // Fallback: If AI moderation fails, assume the message is appropriate.
         isAppropriate = true;
     }
 
@@ -175,7 +176,7 @@ export default function SecretMessagesPage() {
           <Card className="max-w-2xl mx-auto mb-16 glass-card">
             <CardHeader>
               <CardTitle>Kirim Pesan Anonim</CardTitle>
-              <CardDescription>Tulis pesanmu di bawah ini. Pesan akan ditampilkan di papan pesan di halaman ini.</CardDescription>
+              <CardDescription>Pesan yang Anda kirim akan muncul di papan pesan publik di halaman ini. Harap gunakan kata-kata yang sopan.</CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
