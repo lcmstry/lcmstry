@@ -1,0 +1,32 @@
+/**
+ * @file Firebase Security Rules
+ * @core Philosophy: This ruleset prioritizes the privacy and integrity of anonymous messages. It allows public read access to all messages, but restricts creation to authenticated anonymous users, ensuring that only those submitting through the app can add messages. Deletion is strictly forbidden on the client and should only happen via server-side Admin SDK.
+ * @data Structure: Messages are stored in the `/anonymous_messages/{messageId}` collection.
+ * @key Security Decisions:
+ *   - Public read access is granted to `/anonymous_messages` to allow open consumption of messages.
+ *   - Message creation is restricted to authenticated anonymous users.
+ *   - Message deletion is disallowed from the client. Admin deletion must be implemented via a server-side function using the Admin SDK to ensure secure and authorized removal of content.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    /**
+     * @description Controls access to anonymous messages. Allows public read access, restricts creation to authenticated anonymous users. Deletion is denied client-side.
+     * @path /anonymous_messages/{messageId}
+     * @allow (get, list) Allows anyone to read messages.
+     * @allow (create) Allows authenticated anonymous users to create messages. Example: request.auth.uid != null
+     * @deny (update, delete) Denies updates and deletes from the client side.
+     * @principle Public read access, authenticated creation, and server-side admin deletion.
+     */
+    match /anonymous_messages/{messageId} {
+      allow get, list: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if false;
+    }
+
+    // Define helper functions for rule clarity and reusability.
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

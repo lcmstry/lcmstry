@@ -1,0 +1,43 @@
+
+{
+  "entities": {
+    "AnonymousMessage": {
+      "title": "AnonymousMessage",
+      "type": "object",
+      "description": "Represents an anonymous message submitted by a user.",
+      "properties": {
+        "to": {
+          "type": "string",
+          "description": "The recipient of the anonymous message."
+        },
+        "message": {
+          "type": "string",
+          "description": "The content of the anonymous message."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the message was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "to",
+        "message",
+        "createdAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "/anonymous_messages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/AnonymousMessage"
+      },
+      "description": "Stores anonymous messages submitted by users. Anyone can read, but only authenticated anonymous users can create."
+    }
+  }
+}

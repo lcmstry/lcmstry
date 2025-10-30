@@ -1,0 +1,190 @@
+{
+  "placeholderImages": [
+    {
+      "id": "nabila",
+      "description": "Nabila Rizki Agnia",
+      "imageUrl": "/images/member/nabila.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "zovanda",
+      "description": "Zovanda Putri Nazyra",
+      "imageUrl": "/images/member/zovanda.png",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "dwina",
+      "description": "Dwina Berlieana",
+      "imageUrl": "/images/member/dwina.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "putri",
+      "description": "Putri Afifah Khairunnisa",
+      "imageUrl": "/images/member/putri.png",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "dimas",
+      "description": "Dimas Yuda Pratama",
+      "imageUrl": "/images/member/dimas.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "afan",
+      "description": "Ahmad Afan Saputra",
+      "imageUrl": "/images/member/monyet.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "alfaris",
+      "description": "Alfaris Abiyyu Ramadhan",
+      "imageUrl": "/images/member/monyet.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "amelia-a",
+      "description": "Amelia Andina Putri",
+      "imageUrl": "/images/member/amelia.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "amira",
+      "description": "Amira Lutfia Alkamila",
+      "imageUrl": "/images/member/amira.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "brilia",
+      "description": "Brilia Fatihah",
+      "imageUrl": "/images/member/monyet.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "bunga",
+      "description": "Bunga Chesyaqilla Yandrina",
+      "imageUrl": "/images/member/bunga.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "dinda",
+      "description": "Dinda Septiasa",
+      "imageUrl": "/images/member/dinda.png",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "gilang",
+      "description": "Gilang Ferdinan",
+      "imageUrl": "/images/member/gilang.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "lulu",
+      "description": "Lulu Zakiyah",
+      "imageUrl": "/images/member/lulu.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "rifky",
+      "description": "M Rifky Alsyahputra",
+      "imageUrl": "/images/member/rifky.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "alif",
+      "description": "M. Alif Rizkiano Mauliddin",
+      "imageUrl": "/images/member/alif.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "natasya",
+      "description": "Natasya",
+      "imageUrl": "/images/member/monyet.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "nayla",
+      "description": "Nayla Siti Azzyza",
+      "imageUrl": "/images/member/nayla.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "nia",
+      "description": "Nia Tripen Sella Manalu",
+      "imageUrl": "/images/member/monyet.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "raid",
+      "description": "Raid Agasyah",
+      "imageUrl": "/images/member/raid.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "risky",
+      "description": "Risky Amelia",
+      "imageUrl": "/images/member/risky.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "shandy",
+      "description": "Shandy Dwi Raka Putra",
+      "imageUrl": "/images/member/shandy.jpg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "yulia",
+      "description": "Yulia Agustin",
+      "imageUrl": "/images/member/yulia.png",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "zahra",
+      "description": "Zahra Amelia",
+      "imageUrl": "/images/member/zahra.jpg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "default-member",
+      "description": "Default Member Photo",
+      "imageUrl": "https://images.unsplash.com/photo-1544502062-f82887f03d1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBzaWxob3VldHRlfGVufDB8fHx8MTc2MTc2MjUyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person silhouette"
+    },
+    {
+      "id": "gallery-compro",
+      "description": "After Company Profil",
+      "imageUrl": "/images/kegiatan/compro.jpg",
+      "imageHint": "group photo"
+    },
+    {
+      "id": "gallery-bakar",
+      "description": "Bakar Bakar",
+      "imageUrl": "/images/kegiatan/bakarbakar.jpg",
+      "imageHint": "food barbecue"
+    },
+    {
+      "id": "gallery-gacoan",
+      "description": "Gacoan",
+      "imageUrl": "/images/kegiatan/gacoan.jpg",
+      "imageHint": "people eating"
+    },
+    {
+      "id": "gallery-bukber",
+      "description": "Bukber",
+      "imageUrl": "/images/kegiatan/bukber.jpg",
+      "imageHint": "community gathering"
+    },
+    {
+      "id": "gallery-fitri",
+      "description": "Idul Fitri",
+      "imageUrl": "/images/kegiatan/idulfitri.jpg",
+      "imageHint": "family celebration"
+    },
+    {
+      "id": "gallery-kolam",
+      "description": "Kolam with IB",
+      "imageUrl": "/images/kegiatan/kolam.jpg",
+      "imageHint": "swimming pool"
+    }
+  ]
+}
