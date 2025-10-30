@@ -19,7 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Send, RefreshCw, MessageSquare, User, Spy, Mail } from 'lucide-react';
+import { Send, RefreshCw, MessageSquare, User, KeyRound, Mail } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { id as indonesiaLocale } from 'date-fns/locale';
 import { Header } from '@/components/layout/header';
@@ -274,7 +274,7 @@ export default function SecretMessagesPage() {
               <DialogContent className="sm:max-w-md bg-card/80 backdrop-blur-lg border-primary/30 text-white">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-3 text-xl text-primary">
-                    <Spy className="h-6 w-6"/>
+                    <KeyRound className="h-6 w-6"/>
                     Ssst! Pesan Rahasia Terungkap!
                   </DialogTitle>
                   <DialogDescription className="text-muted-foreground pt-2">
